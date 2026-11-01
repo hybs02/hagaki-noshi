@@ -1,0 +1,47 @@
+/* はがき（100×148mm）の通信面の組み方 */
+
+.hagaki {
+  width: 100mm;
+  height: 148mm;
+  padding: 13mm 9mm 11mm 9mm;
+}
+
+.hagaki .sheet-inner {
+  display: flex;
+  flex-direction: column;
+}
+.hagaki .sheet-inner > * { flex-shrink: 0; }
+
+.hagaki p { margin: 0; }
+
+.hagaki-heading {
+  font-size: 1.32em;
+  letter-spacing: 0.14em;
+  margin-block-end: 0.7em !important;
+}
+
+.hagaki-date {
+  padding-inline-start: 2.5em;
+  margin-block-start: 0.5em !important;
+}
+
+.hagaki-sender {
+  margin-block-start: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.hagaki-addr {
+  padding-inline-start: 6em;
+  font-size: 0.86em;
+}
+
+.hagaki-names {
+  margin-block-start: 0.4em;
+  text-align: end;
+  padding-inline-end: 1em;
+  font-size: 1.18em;
+  letter-spacing: 0.24em;
+}
+
+.hagaki-ghost { visibility: hidden; }

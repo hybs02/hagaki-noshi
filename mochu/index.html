@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://hybs02.github.io/hagaki-noshi/mochu/">
+<title>喪中はがきの文面作成と印刷（無料・登録なし）</title>
+<meta name="description" content="続柄・お名前・亡くなった月・年齢を入れるだけで、喪中はがきと寒中見舞いの文面が縦書きでできあがり、そのまま家のプリンタではがきに印刷できます。文面の決まりと出す時期の解説つき。入力はどこにも送信しません。">
+<meta property="og:title" content="喪中はがきの文面作成と印刷（無料・登録なし）">
+<meta property="og:description" content="入力するだけで喪中はがき・寒中見舞いの縦書きの文面ができ、はがきに印刷できます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hybs02.github.io/hagaki-noshi/mochu/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/tategaki.css">
+<link rel="stylesheet" href="../assets/hagaki.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='3' width='18' height='26' rx='2' fill='%23fffdf9' stroke='%234a4e69' stroke-width='2'/%3E%3Cpath d='M19 8v16M14 8v11' stroke='%234a4e69' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-name" href="../">はがき・のし袋の書き方と印刷</a>
+    <nav class="site-nav"><a href="#guide">書き方の解説</a></nav>
+  </div>
+</header>
+
+<main class="site-main">
+  <h1 class="page-title">喪中はがきの文面作成と印刷</h1>
+  <p class="page-lead">亡くなった方の続柄・お名前・月・年齢を入れると、決まりに沿った縦書きの文面ができます。そのまま家のプリンタではがきに刷れます。寒中見舞いにも切り替えられます。</p>
+
+  <div class="tool">
+    <form id="mochu-form" class="tool-form" novalidate>
+      <section class="panel">
+        <h2 class="panel-title">何を作るか</h2>
+        <label class="field">
+          <span class="field-label">種類</span>
+          <select name="kind"></select>
+        </label>
+      </section>
+
+      <section class="panel" id="persons-block">
+        <h2 class="panel-title">亡くなった方</h2>
+        <div id="person1">
+          <div class="panel-sub-head" id="person1-head" hidden><span>1人目</span></div>
+          <div class="field-grid">
+            <label class="field">
+              <span class="field-label">続柄（あなたから見て）</span>
+              <input type="text" name="p1rel" list="relations" placeholder="例：父" maxlength="12" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="field-label">お名前</span>
+              <input type="text" name="p1name" placeholder="例：太郎" maxlength="30" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="field-label">亡くなった年</span>
+              <select name="p1year" data-death-year></select>
+            </label>
+            <label class="field">
+              <span class="field-label">亡くなった月</span>
+              <select name="p1month" data-death-month></select>
+            </label>
+            <label class="field">
+              <span class="field-label">日（入れなくてよい）</span>
+              <input type="number" name="p1day" min="1" max="31" inputmode="numeric" placeholder="例：12">
+            </label>
+            <label class="field">
+              <span class="field-label">年齢（入れなくてよい）</span>
+              <input type="number" name="p1age" min="0" max="130" inputmode="numeric" placeholder="例：85">
+            </label>
+          </div>
+          <p class="field-hint" data-name-optional hidden>この文面では、お名前は使わず続柄だけを書きます。</p>
+        </div>
+
+        <div id="person2" class="panel-sub" hidden>
+          <div class="panel-sub-head">
+            <span>2人目</span>
+            <button type="button" class="btn-text" id="remove-person">2人目を外す</button>
+          </div>
+          <div class="field-grid">
+            <label class="field">
+              <span class="field-label">続柄</span>
+              <input type="text" name="p2rel" list="relations" placeholder="例：祖母" maxlength="12" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="field-label">お名前</span>
+              <input type="text" name="p2name" placeholder="例：花子" maxlength="30" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="field-label">亡くなった年</span>
+              <select name="p2year" data-death-year></select>
+            </label>
+            <label class="field">
+              <span class="field-label">亡くなった月</span>
+              <select name="p2month" data-death-month></select>
+            </label>
+            <label class="field">
+              <span class="field-label">日（入れなくてよい）</span>
+              <input type="number" name="p2day" min="1" max="31" inputmode="numeric">
+            </label>
+            <label class="field">
+              <span class="field-label">年齢（入れなくてよい）</span>
+              <input type="number" name="p2age" min="0" max="130" inputmode="numeric">
+            </label>
+          </div>
+          <p class="field-hint">文面では、先に亡くなった方から順に並べます。</p>
+        </div>
+        <div class="actions">
+          <button type="button" class="btn btn-small" id="add-person">亡くなった方をもう1人加える</button>
+        </div>
+        <datalist id="relations"></datalist>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">言葉の選び方</h2>
+        <div class="field-grid">
+          <label class="field" data-needs-person>
+            <span class="field-label">亡くなったことの言い方</span>
+            <select name="verb">
+              <option value="永眠">永眠いたしました</option>
+              <option value="他界">他界いたしました</option>
+            </select>
+          </label>
+          <label class="field field-wide" data-mochu-only>
+            <span class="field-label">はじめの挨拶</span>
+            <select name="greeting"></select>
+          </label>
+          <label class="field field-wide" data-mochu-only>
+            <span class="field-label">結びの言葉</span>
+            <select name="closing"></select>
+          </label>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">日付と差出人</h2>
+        <p class="notice" id="timing-note" hidden></p>
+        <div class="field-grid">
+          <label class="field">
+            <span class="field-label">出す年</span>
+            <select name="sendYear"></select>
+          </label>
+          <label class="field">
+            <span class="field-label">出す月</span>
+            <select name="sendMonth"></select>
+          </label>
+          <label class="field">
+            <span class="field-label">年の書き方</span>
+            <select name="calendar">
+              <option value="wareki">和暦（令和）</option>
+              <option value="seireki">西暦</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">郵便番号</span>
+            <input type="text" name="zip" placeholder="例：123-4567" maxlength="10" inputmode="numeric" autocomplete="off">
+          </label>
+          <label class="field field-wide">
+            <span class="field-label">住所</span>
+            <input type="text" name="addr1" placeholder="例：東京都千代田区千代田1-2-3" maxlength="60" autocomplete="off">
+          </label>
+          <label class="field field-wide">
+            <span class="field-label">建物名・部屋番号（入れなくてよい）</span>
+            <input type="text" name="addr2" placeholder="例：〇〇マンション101" maxlength="60" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field-label">姓</span>
+            <input type="text" name="family" placeholder="例：山田" maxlength="12" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field-label">名</span>
+            <input type="text" name="given1" placeholder="例：一郎" maxlength="12" autocomplete="off">
+          </label>
+          <label class="field">
+            <span class="field-label">連名の名（入れなくてよい）</span>
+            <input type="text" name="given2" placeholder="例：花子" maxlength="12" autocomplete="off">
+          </label>
+        </div>
+        <p class="field-hint">数字は縦書き用に漢数字へ、ハイフンは「ー」に直して刷ります。</p>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">文面（直接直せます）</h2>
+        <p class="notice" id="edit-note" hidden>手で直した文面を使っています。<button type="button" class="btn-text" id="regen">入力から作り直す</button></p>
+        <label class="field">
+          <span class="field-label">1行が縦の1列になります</span>
+          <textarea id="body-edit" class="body-edit" spellcheck="false"></textarea>
+        </label>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">印刷</h2>
+        <div class="field-grid">
+          <label class="field">
+            <span class="field-label">文字の色</span>
+            <select name="ink">
+              <option value="black">黒</option>
+              <option value="usuzumi">薄墨（灰色）</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">用紙</span>
+            <select name="paper">
+              <option value="hagaki">はがき</option>
+              <option value="a4">A4 の紙に試し刷り</option>
+            </select>
+          </label>
+          <label class="field">
+            <span class="field-label">ずれの調整・横（mm）</span>
+            <input type="number" name="offsetX" value="0" min="-10" max="10" step="0.5" inputmode="decimal">
+          </label>
+          <label class="field">
+            <span class="field-label">ずれの調整・縦（mm）</span>
+            <input type="number" name="offsetY" value="0" min="-10" max="10" step="0.5" inputmode="decimal">
+          </label>
+        </div>
+        <p class="field-hint">横はプラスで右へ、縦はプラスで下へずれます。</p>
+      </section>
+    </form>
+
+    <aside class="tool-preview" id="preview-area" aria-label="はがきの見本">
+      <p class="notice" id="overflow-note" hidden>文面が長すぎて、はがきに収まりません。文面の行を減らしてください。</p>
+      <div class="sheet-preview" id="preview">
+        <div class="sheet hagaki" id="hagaki"><div class="sheet-inner"></div></div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn btn-primary" id="print-btn">印刷する</button>
+        <button type="button" class="btn" id="copy-btn">文面をコピー</button>
+        <button type="button" class="btn" id="clear-btn">入力を消す</button>
+      </div>
+      <p class="privacy-line">入力した内容はどこにも送信しません。この端末のブラウザにだけ残ります。</p>
+    </aside>
+  </div>
+  <a class="jump-preview" href="#preview-area">はがきの見本と印刷へ</a>
+
+  <article class="guide" id="guide">
+    <nav class="toc" aria-label="目次">
+      目次
+      <ol>
+        <li><a href="#what">喪中はがきとは</a></li>
+        <li><a href="#when">出す時期</a></li>
+        <li><a href="#who">どこまでの親族で出すか・誰に出すか</a></li>
+        <li><a href="#rules">文面の決まり</a></li>
+        <li><a href="#parts">文面の組み立てと文例</a></li>
+        <li><a href="#relation">続柄と年齢の書き方</a></li>
+        <li><a href="#kanchu">間に合わなかった時・年賀状が届いた時</a></li>
+        <li><a href="#print">家のプリンタで刷る手順</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ol>
+    </nav>
+
+    <h2 id="what">喪中はがきとは</h2>
+    <p>喪中はがきは、身内が亡くなった年に「新年の挨拶を控えます」と前もって知らせる挨拶状です。年賀欠礼状とも呼びます。</p>
+    <p>亡くなったことを知らせるのが本来の目的ではありません。年賀状をやり取りしている相手に、年賀状を出さないことを伝えるためのものです。相手が年賀状を用意する前に届けます。</p>
+
+    <h2 id="when">出す時期</h2>
+    <table>
+      <tr><th>場合</th><th>出す時期</th></tr>
+      <tr><td>ふつう</td><td>11月中旬〜12月上旬に相手に届くように</td></tr>
+      <tr><td>12月に入ってから亡くなった</td><td>間に合えば年内に出す。間に合わなければ、年が明けて松の内が過ぎてから寒中見舞いで知らせる</td></tr>
+      <tr><td>年賀状を出したあとに亡くなった</td><td>相手からの年賀状は受け取ってよい。松の内が過ぎてから寒中見舞いで事情を伝える</td></tr>
+    </table>
+    <p>早すぎると忘れられ、遅すぎると相手がもう年賀状を出したあとになります。10月中に出しても失礼ではありませんが、11月に入ってからが目安です。</p>
+
+    <h2 id="who">どこまでの親族で出すか・誰に出すか</h2>
+    <h3>喪中とする親族の範囲</h3>
+    <p>決まった線はありませんが、一般には次の範囲で喪中とします。</p>
+    <table>
+      <tr><th>間柄</th><th>あたる人</th><th>目安</th></tr>
+      <tr><td>配偶者</td><td>夫・妻</td><td>喪中とする</td></tr>
+      <tr><td>一親等</td><td>父母・配偶者の父母・子</td><td>喪中とする</td></tr>
+      <tr><td>二親等</td><td>祖父母・兄弟姉妹・孫・配偶者の祖父母や兄弟姉妹</td><td>同居していたか、付き合いの深さで決める家が多い</td></tr>
+      <tr><td>三親等から先</td><td>伯父・叔母・甥・姪など</td><td>ふつうは喪中としない</td></tr>
+    </table>
+    <h3>出す相手</h3>
+    <ul>
+      <li>毎年年賀状をやり取りしている相手</li>
+      <li>葬儀に参列してくれた相手にも、年賀状のやり取りがあれば出す</li>
+      <li>仕事だけの付き合いの相手には喪中はがきを出さず、いつもどおり年賀状を出す人もいる</li>
+    </ul>
+
+    <h2 id="rules">文面の決まり</h2>
+    <table>
+      <tr><th>決まり</th><th>中身</th></tr>
+      <tr><td>句読点を使わない</td><td>「、」「。」の代わりに字をあけるか、行を変えて区切る。昔の書状にならった慣習</td></tr>
+      <tr><td>頭語・結語を書かない</td><td>「拝啓」「敬具」などは入れず、挨拶の言葉から書き始める</td></tr>
+      <tr><td>近況やお祝いの言葉を入れない</td><td>出産・結婚・転居などの報告は書かない。必要なら別の便りで伝える</td></tr>
+      <tr><td>日付は月まで</td><td>「令和八年十一月」のように、日は書かない</td></tr>
+      <tr><td>数字は漢数字</td><td>縦書きなので年齢・月・住所の番地も漢数字にする</td></tr>
+      <tr><td>文字の色は黒か薄墨</td><td>薄墨（灰色）で刷る人もいるが、黒でも失礼ではない</td></tr>
+    </table>
+    <p>このページの文面は、上の決まりに沿って組み立てます。</p>
+
+    <h2 id="parts">文面の組み立てと文例</h2>
+    <table>
+      <tr><th>順</th><th>書くこと</th></tr>
+      <tr><td>挨拶</td><td>喪中のため新年の挨拶を控えること</td></tr>
+      <tr><td>故人のこと</td><td>いつ・誰が（続柄と名前）・何歳で亡くなったか</td></tr>
+      <tr><td>お礼とお願い</td><td>生前や一年間のお礼と、これからも変わらぬ付き合いのお願い</td></tr>
+      <tr><td>日付</td><td>出す年と月</td></tr>
+      <tr><td>差出人</td><td>郵便番号・住所・名前（夫婦なら連名）</td></tr>
+    </table>
+    <h3>文例：父が亡くなった時</h3>
+    <p class="example">喪中につき　年末年始のご挨拶を謹んでご遠慮申し上げます
+本年六月に　父　太郎が八十五歳にて永眠いたしました
+本年中に賜りましたご厚情に深く感謝いたしますとともに
+明年も変わらぬご厚誼のほどよろしくお願い申し上げます
+令和八年十一月</p>
+    <h3>文例：同じ年に二人亡くなった時</h3>
+    <p class="example">喪中につき　新年のご挨拶を失礼させていただきます
+本年三月に　祖母　花子が九十二歳にて
+八月に　父　太郎が六十八歳にて永眠いたしました
+生前に賜りましたご厚情に心より御礼申し上げます</p>
+    <p>二人の時は、亡くなった順に書きます。一枚にまとめて構いません。</p>
+
+    <h2 id="relation">続柄と年齢の書き方</h2>
+    <h3>続柄</h3>
+    <ul>
+      <li>続柄は差出人から見た呼び方で書く（自分の父なら「父」）</li>
+      <li>夫婦連名の時は、筆頭の名前（ふつうは夫）から見た続柄にすることが多い。妻の父なら「義父」、または「妻　花子の父」のように書く</li>
+      <li>故人と差出人の姓が違う時は、故人の名前を姓から書くと伝わりやすい</li>
+    </ul>
+    <h3>年齢</h3>
+    <ul>
+      <li>「八十五歳にて」のように満年齢で書くのが今は一般的</li>
+      <li>「享年」は本来、生まれた年を一歳と数える数え年の言い方で、「歳」を付けない書き方もある。使う時は文面の欄で直す</li>
+      <li>年齢は書かなくても構わない。入れなければ「永眠いたしました」だけになる</li>
+    </ul>
+    <h3>「永眠」「他界」「逝去」</h3>
+    <p>「逝去」は相手の身内に使う敬った言い方です。自分の身内には使わず、「永眠」か「他界」を使います。</p>
+
+    <h2 id="kanchu">間に合わなかった時・年賀状が届いた時</h2>
+    <p>喪中はがきが間に合わなかった時や、喪中に年賀状が届いた時は、寒中見舞いで返します。上の「種類」で寒中見舞いを選ぶと、その文面になります。</p>
+    <table>
+      <tr><th>場合</th><th>寒中見舞いで書くこと</th></tr>
+      <tr><td>喪中を知らせる前に年賀状が届いた</td><td>年賀状のお礼・誰がいつ亡くなったか・知らせが遅れたおわび</td></tr>
+      <tr><td>喪中はがきを出した相手から年賀状が届いた</td><td>年賀状のお礼・喪中のため挨拶を控えたこと。相手を責める言葉は入れない</td></tr>
+      <tr><td>喪中の相手へ出す</td><td>年始の挨拶を控えたこと・お悔やみの一言・相手を気づかう言葉</td></tr>
+    </table>
+    <p>寒中見舞いは、松の内（1月7日まで。1月15日までの地域もある）が明けてから、立春の前日（2月3日ごろ）までに出します。</p>
+
+    <h2 id="print">家のプリンタで刷る手順</h2>
+    <ol>
+      <li>まず「用紙」を「A4 の紙に試し刷り」にして、ふつうの紙に刷る。はがきの大きさの点線の枠が出るので、本物のはがきを重ねて字の位置を確かめる</li>
+      <li>「用紙」を「はがき」に戻し、「印刷する」を押す</li>
+      <li>印刷の画面で、用紙サイズを「はがき」、倍率を「100%」（「実際のサイズ」）、余白を「なし」にする</li>
+      <li>はがきの通信面（郵便番号の枠が無い面）に刷れる向きで、プリンタにはがきを入れる。向きはプリンタの説明書に書いてある</li>
+      <li>字がずれたら「ずれの調整」で mm 単位で動かして、もう一度刷る</li>
+    </ol>
+    <p>印刷の画面で「PDF に保存」を選ぶと、ファイルとして残せます。インクジェット紙のはがきはインクジェットのプリンタで刷ると、にじみにくくなります。</p>
+
+    <h2 id="faq">よくある質問</h2>
+    <h3>喪中の人に年賀状を出してもいいですか</h3>
+    <p>控えるのが一般的です。代わりに、松の内が過ぎてから寒中見舞いを出します。</p>
+    <h3>喪中に年賀状を受け取るのは失礼ですか</h3>
+    <p>受け取って構いません。返事は年賀状ではなく寒中見舞いで出します。</p>
+    <h3>喪中はがきに一言添えてもいいですか</h3>
+    <p>手書きで短く添える人もいます。お祝いや近況の話は避け、相手を気づかう言葉にとどめます。</p>
+    <h3>入力した名前や住所はどこかに送られますか</h3>
+    <p>送られません。文面づくりと印刷は、すべてお使いのブラウザの中で行います。入力はこの端末のブラウザにだけ残り、「入力を消す」で消せます。</p>
+    <h3>この文面どおりでないといけませんか</h3>
+    <p>ここの文面は一般的な形です。地域・宗教・家の慣習で違うことがあります。気になる所は「文面」の欄で自由に直せます。</p>
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <a href="../">トップ</a>
+    <a href="../privacy/">プライバシーと免責</a>
+  </div>
+</footer>
+
+<script type="module" src="../assets/mochu-ui.js"></script>
+</body>
+</html>

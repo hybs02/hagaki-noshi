@@ -1,0 +1,60 @@
+/* 縦書きの紙（実寸 mm）と印刷。はがき・のし袋で共通 */
+
+.sheet {
+  --ink: #1a1a1a;
+  position: relative;
+  box-sizing: border-box;
+  background: #fff;
+  color: var(--ink);
+  font-family: "Shippori Mincho", "Yu Mincho", "YuMincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "MS PMincho", serif;
+  transform-origin: top left;
+  font-kerning: none;
+}
+.sheet[data-ink="usuzumi"] { --ink: #5c5c5c; }
+
+.sheet-inner {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: var(--fs, 4mm);
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+}
+
+.sheet-preview {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.sheet-preview .sheet {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .12), 0 8px 24px rgba(40, 30, 20, .14);
+}
+
+#print-root { display: none; }
+
+@media print {
+  html, body { margin: 0 !important; padding: 0 !important; background: #fff !important; }
+  body > *:not(#print-root) { display: none !important; }
+  #print-root { display: block; }
+  #print-root[data-paper="hagaki"] {
+    width: var(--sheet-w, 100mm);
+    height: var(--sheet-h, 148mm);
+    overflow: hidden;
+  }
+  #print-root[data-paper="a4"] { padding-top: 20mm; }
+  #print-root .sheet {
+    transform: translate(var(--dx, 0), var(--dy, 0)) !important;
+    box-shadow: none !important;
+    position: static;
+  }
+  #print-root[data-paper="a4"] .sheet {
+    margin: 0 auto;
+    outline: 0.2mm dashed #888;
+  }
+  .sheet { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
