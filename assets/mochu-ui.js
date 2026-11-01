@@ -3,6 +3,7 @@
 import { buildDoc, docToText, timingNote, KINDS, RELATIONS, GREETINGS, CLOSINGS } from './mochu.js';
 import { mountPreview, printSheet, store, toast, copyText } from './tategaki.js';
 import { renderHagaki } from './hagaki.js';
+import { renderAffiliate } from './affiliate.js';
 
 const KEY = 'mochu-hagaki-form';
 const $ = sel => document.querySelector(sel);
@@ -284,6 +285,7 @@ function watchJumpBar() {
 
 setup();
 watchJumpBar();
+renderAffiliate($('#order'));
 $('#add-person').hidden = !$('#person2').hidden;
 bind();
 // 横に並べた時は、見本と印刷のボタンが一度に画面へ収まるように縮める

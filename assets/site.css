@@ -253,6 +253,22 @@ textarea {
 }
 .toc ol { margin: 6px 0; padding-left: 1.4em; }
 
+/* 紹介リンク（PR） */
+.pr-label {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 0 8px;
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 400;
+  vertical-align: middle;
+}
+.affiliate ul { padding-left: 1.2em; }
+.affiliate li { margin: 6px 0; }
+.affiliate-pixel { width: 1px; height: 1px; border: 0; }
+
 .site-footer {
   margin-top: 64px;
   border-top: 1px solid var(--line);
